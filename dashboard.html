@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal Dashboard | Global Science University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sidebar-bg: #0f172a;
+            --sidebar-hover: #1e293b;
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --bg-main: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --success-bg: #dcfce7;
+            --success-text: #15803d;
+            --warning-bg: #fef3c7;
+            --warning-text: #b45309;
+            --info-bg: #e0f2fe;
+            --info-text: #0369a1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background-color: var(--sidebar-bg);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 24px 16px;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 12px 24px 12px;
+            border-bottom: 1px solid #1e293b;
+            margin-bottom: 24px;
+        }
+
+        .brand-logo {
+            width: 38px;
+            height: 38px;
+            background-color: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .brand-text h2 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .brand-text span {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item a:hover,
+        .nav-item a.active {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .logout-section {
+            border-top: 1px solid #1e293b;
+            padding-top: 16px;
+        }
+
+        .logout-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #f87171;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .main-content {
+            margin-left: 260px;
+            flex: 1;
+            padding: 28px 36px;
+            width: calc(100% - 260px);
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .greeting h1 {
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .greeting p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            margin-top: 4px;
+        }.student-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--card-bg);
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .profile-info strong {
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .profile-info span {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            padding: 22px 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .stat-details span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .stat-details h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .stat-details small {
+            font-size: 0.78rem;
+            color: var(--success-text);
+            font-weight: 600;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.7fr 1fr;
+            gap: 24px;
+        }
+
+        .panel {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .panel-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 14px 10px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        .course-code {
+            font-weight: 600;
+            color: var(--primary);
+            display: block;
+            font-size: 0.8rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-completed { background-color: var(--success-bg); color: var(--success-text); }
+        .status-ongoing { background-color: var(--warning-bg); color: var(--warning-text); }
+        .status-upcoming { background-color: var(--info-bg); color: var(--info-text); }.right-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .calendar-list, .announcement-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .calendar-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .date-box {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            min-width: 52px;
+            padding: 8px 6px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .date-box span { display: block; font-size: 0.7rem; text-transform: uppercase; }
+        .date-box strong { font-size: 1.1rem; }
+
+        .event-info h4 { font-size: 0.92rem; font-weight: 600; }
+        .event-info p { font-size: 0.8rem; color: var(--text-secondary); }
+
+        .announcement-card {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--primary);
+            padding: 12px 14px;
+            border-radius: 6px;
+        }
+
+        .announcement-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+        .announcement-card p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4; }
+        .announcement-card time { display: block; font-size: 0.72rem; color: #94a3b8; margin-top: 6px; }
+
+        @media (max-width: 1024px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content { margin-left: 0; width: 100%; padding: 20px; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+        <div>
+            <div class="brand">
+                <div class="brand-logo">G</div>
+                <div class="brand-text">
+                    <h2>GSU Portal</h2>
+                    <span>Student Information System</span>
+                </div>
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="active"><span>📊</span> Dashboard</a></li>
+                <li class="nav-item"><a href="#"><span>📚</span> Courses</a></li>
+                <li class="nav-item"><a href="#"><span>🎓</span> Grades</a></li>
+                <li class="nav-item"><a href="#"><span>🗓️</span> Time Table</a></li>
+            </ul>
+        </div>
+
+        <div class="logout-section">
+            <a href="index.html" class="logout-link"><span>🚪</span> Logout</a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <header class="top-header">
+            <div class="greeting">
+                <h1>Good morning, Fardawsa 👋</h1>
+                <p>B.Sc. Information Technology & Computer Science • Monday, November 16, 2026</p>
+            </div>
+
+            <div class="student-profile">
+                <div class="avatar">FM</div>
+                <div class="profile-info">
+                    <strong>Fardawsa Mohamed</strong>
+                    <span>ID: GSU/IT/2026/055</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- STATS -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-details">
+                    <span>Current Academic Level</span>
+                    <h3>Level 200</h3>
+                    <small>Semester 1 • Active</small>
+                </div>
+                <div class="stat-icon">🏛️</div>
+            </div>
+
+            <div class="stat-card"><div class="stat-details">
+                    <span>Registered Courses / Units</span>
+                    <h3>6 Courses</h3>
+                    <small>18 Credit Units Total</small>
+                </div>
+                <div class="stat-icon">📘</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-details">
+                    <span>Cumulative GPA (CGPA)</span>
+                    <h3>4.50 / 5.00</h3>
+                    <small>First Class Standing</small>
+                </div>
+                <div class="stat-icon">⭐</div>
+            </div>
+        </section>
+
+        <!-- DASHBOARD GRID -->
+        <div class="dashboard-grid">
+            <section class="panel">
+                <div class="panel-header">
+                    <h2>Today's Classes Schedule</h2>
+                    <span>4 Sessions Today</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Course Title</th>
+                                <th>Venue</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:00 AM - 10:00 AM</td>
+                                <td><span class="course-code">CSC 201</span>Web Application Development</td>
+                                <td>Lab 2 (ICT Block)</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>10:30 AM - 12:30 PM</td>
+                                <td><span class="course-code">CSC 205</span>Database Management Systems</td>
+                                <td>Hall B</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>02:00 PM - 04:00 PM</td>
+                                <td><span class="course-code">NET 203</span>Computer Networks & Routing</td>
+                                <td>Cisco Lab 1</td>
+                                <td><span class="status-badge status-ongoing">In Progress</span></td>
+                            </tr>
+                            <tr>
+                                <td>04:30 PM - 06:00 PM</td>
+                                <td><span class="course-code">UXD 208</span>Human-Computer Interaction</td>
+                                <td>Room 104</td>
+                                <td><span class="status-badge status-upcoming">Upcoming</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <div class="right-stack">
+                <section class="panel">
+                    <div class="panel-header">
+                        <h2>Academic Calendar</h2>
+                        <span>Nov 2026</span>
+                    </div>
+
+                    <div class="calendar-list">
+                        <div class="calendar-item">
+                            <div class="date-box"><span>Nov</span><strong>20</strong></div>
+                            <div class="event-info">
+                                <h4>Mid-Semester Practical Defense</h4>
+                                <p>Frontend & UI/UX Project Submission</p>
+                            </div>
+                        </div>
+
+                        <div class="calendar-item">
+                            <div class="date-box"><span>Nov</span><strong>28</strong></div><div class="event-info">
+                                <h4>Course Registration Deadline</h4>
+                                <p>Final date for add/drop adjustments</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <h2>University Announcements</h2>
+                    </div>
+
+                    <div class="announcement-list">
+                        <div class="announcement-card">
+                            <h4>Midterm Exam Timetable Published</h4>
+                            <p>Students are advised to verify their exam seat numbers and clear library dues.</p>
+                            <time>Posted 2 hours ago • Academic Registry</time>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

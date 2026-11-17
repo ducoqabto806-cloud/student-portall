@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galkayo Digital Academy | Empowering Future Tech Leaders</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Galkayo<span>Digital</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#register" class="btn-nav">Enroll Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <span class="badge">Admissions Open for 2026 Intake</span>
+            <h1>Welcome to Galkayo Digital Academy</h1>
+            <p class="tagline">
+                Bridging the digital divide in Mudug through practical, industry-driven technology training. Build real-world skills for tomorrow's digital economy.
+            </p>
+            <div class="hero-buttons">
+                <a href="#courses" class="btn btn-primary">Explore Courses</a>
+                <a href="#register" class="btn btn-secondary">Register Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about section-padding">
+        <div class="container about-grid">
+            <div class="about-text">
+                <h2>About Our Academy</h2>
+                <p>
+                    <strong>Galkayo Digital Academy</strong> is a premier community-focused technology training center dedicated to equipping youth, students, and professionals with high-demand digital skills.
+                </p>
+                <p>
+                    Our hands-on curriculum combines expert mentorship with practical lab sessions so every graduate leaves with a verified portfolio and job-ready confidence.
+                </p>
+                <ul class="about-highlights">
+                    <li>✔ 100% Practical, Project-Based Learning</li>
+                    <li>✔ Experienced Local & Industry Instructors</li>
+                    <li>✔ Recognized Certificate Upon Completion</li>
+                </ul>
+            </div>
+            <div class="about-stats">
+                <div class="stat-box">
+                    <h3>500+</h3>
+                    <p>Graduates Trained</p>
+                </div>
+                <div class="stat-box">
+                    <h3>100%</h3>
+                    <p>Hands-On Labs</p>
+                </div>
+                <div class="stat-box">
+                    <h3>3</h3>
+                    <p>Core Tech Tracks</p>
+                </div>
+                <div class="stat-box">
+                    <h3>24/7</h3>
+                    <p>Student Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES SECTION -->
+    <section id="courses" class="courses section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Available Courses</h2>
+                <p>Choose a career-focused program designed to take you from beginner to proficient.</p>
+            </div>
+
+            <div class="course-grid">
+                <article class="course-card">
+                    <div class="course-icon">💻</div>
+                    <span class="course-duration">Duration: 12 Weeks</span><h3>Web Development</h3>
+                    <p>Master modern front-end and back-end web technologies including HTML5, CSS3, JavaScript, PHP, and MySQL.</p>
+                    <a href="#register" class="course-link">Enroll in Web Dev →</a>
+                </article>
+
+                <article class="course-card">
+                    <div class="course-icon">🎨</div>
+                    <span class="course-duration">Duration: 8 Weeks</span>
+                    <h3>Graphic Design</h3>
+                    <p>Unleash your creativity using Adobe Illustrator and Photoshop for brand identity and digital media.</p>
+                    <a href="#register" class="course-link">Enroll in Design →</a>
+                </article>
+
+                <article class="course-card">
+                    <div class="course-icon">📊</div>
+                    <span class="course-duration">Duration: 6 Weeks</span>
+                    <h3>Computer Applications</h3>
+                    <p>Build essential office productivity skills including Microsoft Word, Excel data analysis, and PowerPoint.</p>
+                    <a href="#register" class="course-link">Enroll in Comp Apps →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTRATION FORM SECTION -->
+    <section id="register" class="register section-padding">
+        <div class="container form-container">
+            <div class="section-header">
+                <h2>Student Registration</h2>
+                <p>Fill out the form below to reserve your seat for the upcoming cohort.</p>
+            </div>
+
+            <form id="registrationForm" class="reg-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="e.g., Fardawsa Mohamed" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="e.g., fardawsa@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Select Course *</label>
+                    <select id="course" name="course" required>
+                        <option value="" disabled selected>-- Choose a Training Program --</option>
+                        <option value="Web Development">Web Development (12 Weeks)</option>
+                        <option value="Graphic Design">Graphic Design (8 Weeks)</option>
+                        <option value="Computer Applications">Computer Applications (6 Weeks)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Submit Registration</button>
+                <p id="formMessage" class="form-feedback"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>Galkayo Digital Academy</h3>
+                <p>Empowering the next generation of innovators and digital professionals in Galkayo, Somalia.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#register">Admissions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>📍 Main Campus, Wadajir District, Galkayo, Mudug</p>
+                <p>📞 +252 90 700 0000</p>
+                <p>✉️ info@galkayodigital.edu.so</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Galkayo Digital Academy. All Rights Reserved.</p>
+        </div>
+    </footer><script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('fullName',).value;
+            const course = document.getElementById('course').value;
+            const feedback = document.getElementById('formMessage');
+            
+            feedback.style.display = 'block';
+            feedback.textContent = Thank you, ${name}! Your application for ${course} has been received.;
+            this.reset();
+        });
+    </script>
+</body>
+</html>
